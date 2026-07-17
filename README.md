@@ -5,7 +5,7 @@
 # 🎯 **Use Case**   
 
 ## 📚 **Scenario:**  
-An employee named John Doe, working in a sensitive department, was recently placed on a performance improvement plan (PIP). After displaying concerning behavior, management suspects John may be planning to steal proprietary information and leave the company. The investigation involves analyzing activities on John’s corporate device (`windows-target-1`) using Microsoft Defender for Endpoint (MDE).  
+An employee named John Doe, working in a sensitive department, was recently placed on a performance improvement plan (PIP). After displaying concerning behavior, management suspects John may be planning to steal proprietary information and leave the company. The investigation involves analyzing activities on John’s corporate device (`kingsvm`) using Microsoft Defender for Endpoint (MDE).  
 
 ---
 
@@ -29,11 +29,11 @@ An employee named John Doe, working in a sensitive department, was recently plac
      ```
      ```kql
      DeviceFileEvents
-     | where DeviceName == "windows-target-1"
+     | where DeviceName == "kingsvm"
      | where FileName endswith ".zip"
      | order by Timestamp desc
      ```
-![Screenshot 2025-01-05 172716](https://github.com/user-attachments/assets/4fdf9cf4-4fed-4935-bfea-bb76d5b01144)
+<img width="971" height="636" alt="Capturezip" src="https://github.com/user-attachments/assets/dd20e1c4-f05f-4c85-befa-053ebdb97254" />
 
      
 2. **⚙️ Process Analysis:**  
@@ -41,15 +41,16 @@ An employee named John Doe, working in a sensitive department, was recently plac
    - **Detection Query (KQL):**  
 
      ```kql
-     let VMName = "windows-target-1";
-     let specificTime = datetime(2025-01-05T21:48:40.6546522Z);
+     let VMName = "kingsvm";
+     let specificTime = datetime('2026-07-17T23:37:58.6884325Z');
      DeviceProcessEvents
-     | where Timestamp between ((specificTime - 2m) .. (specificTime + 2m))
+     | where TimeGenerated  between ((specificTime - 2m) .. (specificTime + 2m))
      | where DeviceName == VMName
-     | order by Timestamp desc
-     | project Timestamp, DeviceName, ActionType, FileName, ProcessCommandLine
+     | order by TimeGenerated desc
+     | project TimeGenerated, DeviceName, ActionType, FileName, ProcessCommandLine
      ```
-![Screenshot 2025-01-05 180046](https://github.com/user-attachments/assets/12d51ef5-8b84-4b41-9123-99adcbd3edbe)
+<img width="947" height="685" alt="Capturezip1" src="https://github.com/user-attachments/assets/4c272c8e-c100-42a8-94a8-9025cb5a8276" />
+
 
 
    3. **🌐 Network Exfiltration Check:**  
@@ -58,12 +59,13 @@ An employee named John Doe, working in a sensitive department, was recently plac
    - **Detection Query (KQL):**  
 
      ```kql
-     let VMName = "windows-target-1";
-     let specificTime = datetime(2025-01-05T21:48:40.6546522Z);
+     let VMName = "kingsvm";
+     let specificTime = datetime('2026-07-17T23:37:58.6884325Z');
      DeviceProcessEvents
-     | where Timestamp between ((specificTime - 2m) .. (specificTime + 2m))
+     | where TimeGenerated  between ((specificTime - 2m) .. (specificTime + 2m))
      | where DeviceName == VMName
-     | order by Timestamp desc
+     | order by TimeGenerated desc
+
      ```  
 
 4. **📝 Response:**  
