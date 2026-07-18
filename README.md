@@ -105,16 +105,16 @@ An employee named John Doe, working in a sensitive department, was recently plac
 ## Created By:
 - **Author Name**: Herby Amertis
 - **Author Contact**: https://github.com/HerbyAmertis
-- **Date**: Jan 5, 2025
+- **Date**: Jul 17, 2026
 
 ## Validated By:
 - **Reviewer Name**: Josh Madakor
 - **Reviewer Contact**: https://www.linkedin.com/in/joshmadakor/
-- **Validation Date**: Jan , 2025
+- **Validation Date**: Jul 17, 2026
 
 ---
 
 ## Revision History:
 | **Version** | **Changes**                   | **Date**         | **Modified By**   |
 |-------------|-------------------------------|------------------|-------------------|
-| 1.0         | Initial draft                  | `Jan 5, 2025`  | `Herby Amertis`   
+| 1.0         | Initial draft                  | `Jul 17, 2026`  | `Herby Amertis`   
